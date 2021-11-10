@@ -16,7 +16,7 @@ public class InformacoesUsuarioTest {
 
 
         navegador.manage().window().maximize();
-        navegador.get("http://www.youtube.com.br");
+        navegador.get("https://www.youtube.com.br");
 
 
         assertEquals(1,1);
