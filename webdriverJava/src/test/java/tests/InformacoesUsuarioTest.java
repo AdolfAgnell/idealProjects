@@ -31,17 +31,6 @@ public class InformacoesUsuarioTest {
     }
     @Test
     public void testAdicionarUmaInformacaoAdicionalDoUsuario () {
-        // Abrindo o navegador
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\drivers\\chromedriver.exe");
-        WebDriver navegador = new ChromeDriver();
-        // Aplicando um timeout para aguarda a resposta da pagina
-        navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        // Maximizar o navegador abrindo uma janela
-        navegador.manage().window().maximize();
-
-        // Navegando para a pagina do taskit
-        navegador.get("http://www.juliodelima.com.br/taskit/");
-
         // Clicar no link que possui o texto "Sign in"
         navegador.findElement(By.linkText("Sign in")).click();
 
@@ -64,7 +53,7 @@ public class InformacoesUsuarioTest {
     @After
     public void tearDown() {
         //Fechar o navegador ( fecha todas as abas)
-        navegador.quit();
-        //Fechar apenas a aba aberta {navegador.close();
+        navegador.close();
+        //Fechar todas as aba aberta {navegador.quit();
     }
 }
