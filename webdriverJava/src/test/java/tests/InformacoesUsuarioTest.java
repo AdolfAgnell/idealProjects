@@ -2,23 +2,28 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import com.sun.javafx.css.CssError;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import suporte.Screenshot;
+import suporte.generator;
 
 import java.util.concurrent.TimeUnit;
 
 public class InformacoesUsuarioTest {
     private  WebDriver navegador;
+
+    @Rule
+    public TestName test= new TestName();
 
 // Informacoes que vao ocorrer antes de iniciar o test
     @Before
@@ -94,6 +99,10 @@ public class InformacoesUsuarioTest {
         WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
         String mensagem = mensagemPop.getText();
         assertEquals( "Rest in peace, dear phone!", mensagem);
+
+        String screenshotArquivo = "C:/Users/adolf/TestReport/" + generator.dataHoraParaArquivo() + test.getMethodName() +".png";
+        Screenshot.tirar(navegador, screenshotArquivo);
+
 
         //Aguarda ate 10 segundos para quye a janela desapareca
         WebDriverWait aguardar = new WebDriverWait(navegador, 10);
